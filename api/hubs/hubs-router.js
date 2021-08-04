@@ -65,17 +65,14 @@ router.put('/:id', (req, res, next) => {
     .catch(next);
 });
 
-router.put('/:id', async (req, res, next) => {
+// alternative using try /catch
+router.put('/:id', checkIdExists, (req, res, next) => {
   try {
     const updatedHub = await Hubs.update(req.params.id, req.body)
+    res.json(updatedHub)
   } catch (err) {
-
+    next(err)
   }
-  Hubs.update(req.params.id, req.body)
-    .then(hub => {
-      res.status(200).json(hub);
-    })
-    .catch(next);
 });
 
 router.get('/:id/messages', (req, res, next) => {
