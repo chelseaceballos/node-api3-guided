@@ -27,8 +27,11 @@ function checkHubPayload(req, res, next) {
   // if req.body legit call next
   // otherwise call next in a sadder way...
   if (!req.body.name) { // req.body always exists, at least as {}
-    next({ message: `please provide a name!!!!` })
-  } else {
+    next({ message: `please provide a name!!!!`, status: 422 })
+  } else if (req.body.name < 3) {
+    next({ message: `please provide a name!!!!`, status: 422 })
+  }
+  else {
     next(req.body)
   }
 }
