@@ -5,6 +5,8 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
+function checkIdExists()
+
 router.get('/', (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
