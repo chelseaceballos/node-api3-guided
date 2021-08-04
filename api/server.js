@@ -9,17 +9,17 @@ server.use(express.json());
 server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res, next) => {
-  next({ foo: 'bar' })
-  // res.send(`
-  //   <h2>web 44 is da best!!!</h2>
-  //   <p>Welcome to the web 44 is da best!!!</p>
-  // `);
+  res.send(`
+    <h2>web 44 is da best!!!</h2>
+    <p>Welcome to the web 44 is da best!!!</p>
+  `);
 });
 
 server.use('*', (req, res, next) => {
   // catch all, 404 error middleware
   // calling 'next' with an argument sends the argument
   // to the error-handling middleware below
+  console.log(`hitting ${req.method} ${req.baseUrl}`)
   next({ status: 404, message: 'not found' }) // this object becomes the "err" in the midd below
 });
 
