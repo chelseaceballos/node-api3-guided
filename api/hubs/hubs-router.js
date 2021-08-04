@@ -10,14 +10,15 @@ function checkIdExists(req, res, next) {
   // next({ message: 'not found', status: 404 })
   // will allow the request to simply procede to the next middleware
   const { id } = req.params
-  Hubs.findById(req.params.id)
+  Hubs.findById(id)
     .then(hub => {
       if (hub) {
-        next()
+        next() // request proceeds
       } else {
-        next({ message: `hub with id ${req.params.id} not found!!!`})
+        next({ message: `hub with id ${id} not found!!!`})
       }
     })
+    .catch(next)
 }
 
 router.get('/', (req, res, next) => {
