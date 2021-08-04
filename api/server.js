@@ -17,6 +17,8 @@ server.get('/', (req, res) => {
 
 server.use('*', (req, res, next) => {
   // catch all, 404 error middleware
+  // calling 'next' with an argument sends the argument
+  // to the error-handling middleware below
   next({ status: 404, message: 'not found' }) // this object becomes the "err" in the midd below
 });
 
