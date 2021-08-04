@@ -88,7 +88,8 @@ router.post('/:id/messages', (req, res, next) => {
     .then(message => {
       res.status(210).json(message);
     })
-    .catch(next);
+    .catch(next); // the same as the ones above
+    // but avoiding useless function wrapping!!!
 });
 
 module.exports = router;
