@@ -5,7 +5,10 @@ const Messages = require('../messages/messages-model.js');
 
 const router = express.Router();
 
-function checkIdExists()
+function checkIdExists(req, res, next) {
+  // will shoot back an error in the event of id not in db
+  // next({ message: 'not found', status: 404 })
+}
 
 router.get('/', (req, res, next) => {
   Hubs.find(req.query)
