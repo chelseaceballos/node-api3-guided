@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
@@ -25,25 +25,17 @@ router.get('/:id', (req, res) => {
       }
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error retrieving the hub',
-      });
+      next(error)
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
   Hubs.add(req.body)
     .then(hub => {
       res.status(201).json(hub);
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error adding the hub',
-      });
+      next(error)
     });
 });
 
@@ -57,11 +49,7 @@ router.delete('/:id', (req, res) => {
       }
     })
     .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error removing the hub',
-      });
+      
     });
 });
 
