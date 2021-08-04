@@ -17,7 +17,7 @@ server.get('/', (req, res) => {
 
 server.use('*', (req, res, next) => {
   // catch all, 404 error middleware
-  res.status(404).json({ message: 'Not found!!!!!!'})
+  res.status(404).json({ message: `${req.method} Not found!!!!!!` })
 });
 
 module.exports = server;
