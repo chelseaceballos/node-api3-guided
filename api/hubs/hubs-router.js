@@ -35,7 +35,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists, checkIdExists,*/ (req, res, next) => {
-  
+  res.json(req.hub)
 });
 
 router.post('/', (req, res, next) => {
