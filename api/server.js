@@ -21,7 +21,8 @@ server.use('*', (req, res, next) => {
 });
 
 server.use((err, req, res, next) => { // error handling middleware
-
+  // shoots back a response to the client if anything goes wrong
+  // in ANY of the middlewares that preceed this one
 });
 
 module.exports = server;
