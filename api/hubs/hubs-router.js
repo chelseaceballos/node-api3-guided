@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id', checkIdExists, checkIdExists, checkIdExists, checkIdExists, (req, res, next) => {
+router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists, checkIdExists,*/ (req, res, next) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
