@@ -17,7 +17,7 @@ function checkIdExists(req, res, next) {
       } else {
         // request is short-circuited
         // err handling midd will shoot back res to client
-        next({ message: `hub with id ${id} not found!!!`})
+        next({ message: `hub with id ${id} not found!!!` })
       }
     })
     .catch(next)
@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists,*/ (req, res, next) => {
+router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists,*/(req, res, next) => {
   res.json(req.hub)
 });
 
@@ -48,13 +48,9 @@ router.post('/', (req, res, next) => {
 });
 
 router.delete('/:id', checkIdExists, (req, res, next) => {
-  Hubs.remove(req.params.id)
-    .then(count => {
+  Hubs.remove(req.hub.id)
+    .then(() => {
       res.status(200).json({ message: 'The hub has been nuked' });
-      if (count > 0) {
-      } else {
-        res.status(404).json({ message: 'The hub could not be found' });
-      }
     })
     .catch(error => {
       next(error)
