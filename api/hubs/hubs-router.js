@@ -37,7 +37,7 @@ router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists,*/(req, res, n
   res.json(req.hub)
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res, next) => { // { name: 'foobar' }
   Hubs.add(req.body)
     .then(hub => {
       res.status(201).json(hub);
@@ -75,7 +75,7 @@ router.put('/:id', checkIdExists, async (req, res, next) => {
   }
 });
 
-router.get('/:id/messages', (req, res, next) => {
+router.get('/:id/messages', checkIdExists, (req, res, next) => {
   Hubs.findHubMessages(req.params.id)
     .then(messages => {
       res.status(200).json(messages);
@@ -85,7 +85,7 @@ router.get('/:id/messages', (req, res, next) => {
     });
 });
 
-router.post('/:id/messages', (req, res, next) => {
+router.post('/:id/messages', checkIdExists, (req, res, next) => {
   const messageInfo = { ...req.body, hub_id: req.params.id };
 
   Messages.add(messageInfo)
