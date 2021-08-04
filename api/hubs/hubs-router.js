@@ -70,7 +70,7 @@ router.delete('/:id', checkIdExists, (req, res, next) => {
     });
 });
 
-router.put('/:id', checkIdExists, (req, res, next) => {
+router.put('/:id', checkIdExists, checkHubPayload, (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       res.status(200).json(hub);
