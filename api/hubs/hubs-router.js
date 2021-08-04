@@ -23,6 +23,10 @@ function checkIdExists(req, res, next) {
     .catch(next)
 }
 
+function checkHubPayload(req, res, next) {
+  
+}
+
 router.get('/', (req, res, next) => {
   Hubs.find(req.query)
     .then(hubs => {
