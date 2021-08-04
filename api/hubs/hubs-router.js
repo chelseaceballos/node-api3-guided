@@ -8,7 +8,6 @@ const router = express.Router();
 function checkIdExists(req, res, next) {
   // will shoot back an error in the event of id not in db
   // next({ message: 'not found', status: 404 })
-  // will allow the request to simply procede to the next middleware
   const { id } = req.params
   Hubs.findById(id)
     .then(hub => {
