@@ -61,10 +61,19 @@ router.put('/:id', (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       res.status(200).json(hub);
-      if (hub) {
-      } else {
-        res.status(404).json({ message: 'The hub could not be found' });
-      }
+    })
+    .catch(next);
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const updatedHub = await Hubs.update(req.params.id, req.body)
+  } catch (err) {
+
+  }
+  Hubs.update(req.params.id, req.body)
+    .then(hub => {
+      res.status(200).json(hub);
     })
     .catch(next);
 });
