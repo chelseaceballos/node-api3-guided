@@ -13,6 +13,7 @@ function checkIdExists(req, res, next) {
   Hubs.findById(id)
     .then(hub => {
       if (hub) {
+        req.hub = hub
         next() // request proceeds
       } else {
         // request is short-circuited
@@ -34,17 +35,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists, checkIdExists,*/ (req, res, next) => {
-  Hubs.findById(req.params.id)
-    .then(hub => {
-      if (hub) {
-        res.status(200).json(hub);
-      } else {
-        res.status(404).json({ message: 'Hub not found' });
-      }
-    })
-    .catch(error => {
-      next(error)
-    });
+  
 });
 
 router.post('/', (req, res, next) => {
