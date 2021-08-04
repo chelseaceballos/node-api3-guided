@@ -13,7 +13,7 @@ function checkIdExists(req, res, next) {
   Hubs.findById(id)
     .then(hub => {
       if (hub) {
-        req.hub = hub
+        req.hub = hub // makes hub available to the next middleware
         next() // request proceeds
       } else {
         // request is short-circuited
