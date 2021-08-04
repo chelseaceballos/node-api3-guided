@@ -19,8 +19,8 @@ server.use('*', (req, res, next) => {
   // catch all, 404 error middleware
   // calling 'next' with an argument sends the argument
   // to the error-handling middleware below
-  console.log(`hitting ${req.method} ${req.baseUrl}`)
-  next({ status: 404, message: 'not found' }) // this object becomes the "err" in the midd below
+  console.log(`hitting ${req.method} ${req.baseUrl}`);
+  next({ status: 404, message: 'not found' }); // this object becomes the "err" in the midd below
 });
 
 server.use((err, req, res, next) => { // error handling middleware
