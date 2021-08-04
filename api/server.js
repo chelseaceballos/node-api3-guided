@@ -8,11 +8,12 @@ server.use(express.json());
 
 server.use('/api/hubs', hubsRouter);
 
-server.get('/', (req, res) => {
-  res.send(`
-    <h2>web 44 is da best!!!</h2>
-    <p>Welcome to the web 44 is da best!!!</p>
-  `);
+server.get('/', (req, res, next) => {
+  next({ foo: 'bar' })
+  // res.send(`
+  //   <h2>web 44 is da best!!!</h2>
+  //   <p>Welcome to the web 44 is da best!!!</p>
+  // `);
 });
 
 server.use('*', (req, res, next) => {
@@ -25,7 +26,7 @@ server.use('*', (req, res, next) => {
 server.use((err, req, res, next) => { // error handling middleware
   // shoots back a response to the client if anything goes wrong
   // in ANY of the middlewares that preceed this one
-  res.status(err.status || 500).json({ message: `HORROR: ${err.message}`});
+  res.status(err.status || 500).json({ message: `HORROR: ${err.message}` });
 });
 
 module.exports = server;
