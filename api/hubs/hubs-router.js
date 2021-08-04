@@ -37,7 +37,7 @@ router.get('/:id', checkIdExists, /* checkIdExists, checkIdExists,*/(req, res, n
   res.json(req.hub)
 });
 
-router.post('/', (req, res, next) => { // { name: null }
+router.post('/', checkHubPayload, (req, res, next) => { // { name: 'lady gaga' }
   Hubs.add(req.body)
     .then(hub => {
       res.status(201).json(hub);
