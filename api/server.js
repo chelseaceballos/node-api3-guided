@@ -10,8 +10,8 @@ server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res) => {
   res.send(`
-    <h2>Lambda Hubs API</h2>
-    <p>Welcome to the Lambda Hubs API</p>
+    <h2>web 44 is da best!!!</h2>
+    <p>Welcome to the web 44 is da best!!!</p>
   `);
 });
 
