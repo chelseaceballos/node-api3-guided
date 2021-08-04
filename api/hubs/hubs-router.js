@@ -57,7 +57,7 @@ router.delete('/:id', checkIdExists, (req, res, next) => {
     });
 });
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', checkIdExists, (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
       res.status(200).json(hub);
@@ -66,7 +66,7 @@ router.put('/:id', (req, res, next) => {
 });
 
 // alternative using try /catch
-router.put('/:id', checkIdExists, (req, res, next) => {
+router.put('/:id', checkIdExists, async (req, res, next) => {
   try {
     const updatedHub = await Hubs.update(req.params.id, req.body)
     res.json(updatedHub)
