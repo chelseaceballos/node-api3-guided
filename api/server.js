@@ -6,7 +6,7 @@ const server = express();
 
 server.use(express.json()); // req.body {}
 server.use(helmet()); // helmet() returns a callback (req, res, next)
-server.use('/api/hubs', (req, res, next) => {console.log('foo')}, hubsRouter);
+server.use('/api/hubs', (req, res, next) => {next()}, hubsRouter);
 
 server.get('/', (req, res, next) => {
   res.send(`
