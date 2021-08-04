@@ -26,7 +26,7 @@ function checkIdExists(req, res, next) {
 function checkHubPayload(req, res, next) {
   // if req.body legit call next
   // otherwise call next in a sadder way...
-  if (!req.body) { // req.body always exists, at least as {}
+  if (!req.body.name) { // req.body always exists, at least as {}
     next({ message: `please provide a proper request with all the requirements` })
   } else {
     next(req.body)
