@@ -15,6 +15,8 @@ server.get('/', (req, res) => {
   `);
 });
 
-server.use()
+server.use('*', (req, res, next) => {
+
+});
 
 module.exports = server;
