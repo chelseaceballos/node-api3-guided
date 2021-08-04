@@ -65,7 +65,7 @@ router.put('/:id', checkIdExists, (req, res, next) => {
     .catch(next);
 });
 
-// alternative using try /catch
+// alternative using try /catch (won't be reached cause it comes 2nd)
 router.put('/:id', checkIdExists, async (req, res, next) => {
   try {
     const updatedHub = await Hubs.update(req.params.id, req.body)
