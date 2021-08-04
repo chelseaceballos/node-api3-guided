@@ -23,7 +23,7 @@ server.use('*', (req, res, next) => {
 server.use((err, req, res, next) => { // error handling middleware
   // shoots back a response to the client if anything goes wrong
   // in ANY of the middlewares that preceed this one
-  res.status(err.status || 500).json({ message: `HORROR: $`})
+  res.status(err.status || 500).json({ message: `HORROR: ${err.message}`});
 });
 
 module.exports = server;
