@@ -15,6 +15,8 @@ function checkIdExists(req, res, next) {
       if (hub) {
         next() // request proceeds
       } else {
+        // request is short-circuited
+        // err handling midd will shoot back res to client
         next({ message: `hub with id ${id} not found!!!`})
       }
     })
