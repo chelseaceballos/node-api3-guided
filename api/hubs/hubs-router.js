@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkIdExists, checkIdExists, checkIdExists, checkIdExists, (req, res, next) => {
   Hubs.findById(req.params.id)
     .then(hub => {
       if (hub) {
@@ -97,7 +97,7 @@ router.post('/:id/messages', (req, res, next) => {
       res.status(210).json(message);
     })
     .catch(next); // the same as the ones above
-    // but avoiding useless function wrapping!!!
+  // but avoiding useless function wrapping!!!
 });
 
 module.exports = router;
