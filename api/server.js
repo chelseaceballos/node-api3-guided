@@ -5,7 +5,7 @@ const hubsRouter = require('./hubs/hubs-router.js');
 const server = express();
 
 server.use(express.json()); // req.body {}
-// server.use(helmet()); // helmet() returns a callback (req, res, next)
+server.use(helmet()); // helmet() returns a callback (req, res, next)
 server.use('/api/hubs', hubsRouter);
 
 server.get('/', (req, res, next) => {
