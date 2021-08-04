@@ -24,7 +24,8 @@ function checkIdExists(req, res, next) {
 }
 
 function checkHubPayload(req, res, next) {
-  
+  // if req.body legit call next
+  // otherwise call next in a sadder way...
 }
 
 router.get('/', (req, res, next) => {
