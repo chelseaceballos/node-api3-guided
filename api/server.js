@@ -24,7 +24,8 @@ server.use('*', (req, res, next) => {
 });
 
 server.use((err, req, res, next) => { // error handling middleware
-  // shoots back a response to the client if anything goes wrong
+  // when someone else before calls next pasing an arg,
+  // this thing shoots back a response to the client if anything goes wrong
   // in ANY of the middlewares that preceed this one
   res.status(err.status || 500).json({ message: `HORROR: ${err.message}` });
 });
