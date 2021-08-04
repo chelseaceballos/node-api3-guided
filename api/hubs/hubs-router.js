@@ -57,22 +57,16 @@ router.delete('/:id', checkIdExists, (req, res, next) => {
     });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', (req, res, next) => {
   Hubs.update(req.params.id, req.body)
     .then(hub => {
+      res.status(200).json(hub);
       if (hub) {
-        res.status(200).json(hub);
       } else {
         res.status(404).json({ message: 'The hub could not be found' });
       }
     })
-    .catch(error => {
-      // log error to server
-      console.log(error);
-      res.status(500).json({
-        message: 'Error updating the hub',
-      });
-    });
+    .catch(next);
 });
 
 router.get('/:id/messages', (req, res, next) => {
